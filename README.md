@@ -1,23 +1,22 @@
 #### ~~[Download]()~~
 
-# Project
+# cp-unwrapper
 
-a project
+A universal basic unwrapper.
 
 ---
 
+## Known Issues
+- X
+
 ## TODOs
 
-- [ ] A
-    - [x] AA
-    - [x] AB
-- [ ] B
-- [ ] C
+- [ ] Popup's [LOW-PRIO]
 
 ---
 
 ## How to edit the source code?
 
-[Download source code](DLINK)
+[Download source code](https://github.com/qwertzuiii/cp-unwrapper/archive/refs/heads/main.zip)
 
 `pip install -r requirements.txt`
