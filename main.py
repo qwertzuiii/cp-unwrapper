@@ -172,7 +172,7 @@ class MainApp(QMainWindow, QWidget):
 
 if __name__ == '__main__':
 
-    if "--generatekey" in sys.argv:
+    if "--generate_key" in sys.argv:
         x = fernet.Fernet.generate_key()
         print('KEY:', x.decode())
         sys.exit()
