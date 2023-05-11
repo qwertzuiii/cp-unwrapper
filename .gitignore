@@ -1,0 +1,4 @@
+bin/*.gpkg.txt
+*.DEV.*
+
+*__pycache__
