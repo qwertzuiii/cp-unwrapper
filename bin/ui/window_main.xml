@@ -53,7 +53,7 @@
       </font>
      </property>
      <property name="placeholderText">
-      <string notr="true">Path (*.cp)</string>
+      <string notr="true">Path (*.cp, *.zip if wrap)</string>
      </property>
     </widget>
     <widget class="QPushButton" name="btn_browse">
