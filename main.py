@@ -67,7 +67,7 @@ class MainApp(QMainWindow, QWidget):
         self.label_version.setText("version {} ({}), by {}".format(VERSION['version'], VERSION['buildnum'], CONFIG['project_creator']))
     
     def _browse(self):
-        dir = QFileDialog.getOpenFileName(caption="Open a .cp file", filter="Content Package (*.cp);;Any Files (*)")
+        dir = QFileDialog.getOpenFileName(caption="Open a .cp file", filter="Content Package (*.cp);;Zip Package (*.zip);;Any Files (*)")
         
         if dir[0] != "":
             self.line_path.setText(dir[0])
