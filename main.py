@@ -60,14 +60,17 @@ class MainApp(QMainWindow, QWidget):
         self.btn_browse.clicked.connect(self._browse)
         self.btn_browse_key.clicked.connect(self._browse_key)
         self.btn_start.clicked.connect(self._startTh)
-        self.btn_start_wrap.clicked.connect(self._startWrTh)
 
     def _REFRESH_HEAD(self):
         self.label_headline.setText(CONFIG['project_name'])
         self.label_version.setText("version {} ({}), by {}".format(VERSION['version'], VERSION['buildnum'], CONFIG['project_creator']))
     
     def _browse(self):
-        dir = QFileDialog.getOpenFileName(caption="Open a .cp file", filter="Content Package (*.cp);;Zip Package (*.zip);;Any Files (*)")
+        if self.rad_wrap.isChecked():
+            filter = "Zip Package (*.zip);;Content Package (*.cp);;Any Files (*)"
+        else:
+            filter = "Content Package (*.cp);;Zip Package (*.zip);;Any Files (*)"
+        dir = QFileDialog.getOpenFileName(caption="Open a .cp file", filter=filter)
         
         if dir[0] != "":
             self.line_path.setText(dir[0])
@@ -83,12 +86,14 @@ class MainApp(QMainWindow, QWidget):
             print('Operation cancelled')
 
     def _startTh(self):
-        x = threading.Thread(target=self.start_unwrap)
+        if self.rad_unwrap.isChecked():
+            target = self.start_unwrap
+        elif self.rad_wrap.isChecked():
+            target = self.start_wrap
+
+        x = threading.Thread(target=target)
         x.start()
-    
-    def _startWrTh(self):
-        x = threading.Thread(target=self.start_wrap)
-        x.start()
+
     
     def start_unwrap(self):
         path_file = self.line_path.text()
