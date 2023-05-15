@@ -15,10 +15,13 @@
 
 changelog:
   categories:
-    - title: Features
+    - title: New Features 🚀
       labels:
-        - enhancement
-    - title: Bug Fixes
+        - feature
+    - title: Improvements ✨
+      labels:
+        - improvement
+    - title: Bug Fixes 🐛
       labels:
         - bugfix
     - title: Other changes
