@@ -24,7 +24,7 @@ changelog:
     - title: Bug Fixes 🐛
       labels:
         - bugfix
-    - title: Other changes
+    - title: Other changes 🔧
       labels:
         - '*'
       exclude:
