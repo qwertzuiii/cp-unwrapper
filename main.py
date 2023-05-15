@@ -56,10 +56,20 @@ class MainApp(QMainWindow, QWidget):
         self.setWindowIcon(QIcon())  # Icon Loading
 
         self._REFRESH_HEAD()
+        self._radio_change()
 
         self.btn_browse.clicked.connect(self._browse)
         self.btn_browse_key.clicked.connect(self._browse_key)
         self.btn_start.clicked.connect(self._startTh)
+        
+        self.rad_unwrap.toggled.connect(self._radio_change)
+        self.rad_wrap.toggled.connect(self._radio_change)
+    
+    def _radio_change(self):
+        if self.rad_wrap.isChecked():
+            self.line_path.setPlaceholderText("Path to Wrap (.zip)")
+        else:
+            self.line_path.setPlaceholderText("Path to Unwrap (.cp)")
 
     def _REFRESH_HEAD(self):
         self.label_headline.setText(CONFIG['project_name'])
