@@ -63,7 +63,11 @@ class MainApp(QMainWindow, QWidget):
             self.rad_unwrap,
             self.rad_wrap,
             self.line_path,
-            self.line_path_key
+            self.line_path_key,
+            self.btn_generate_key,
+
+            # Menu Bar
+            self.menuFile
         ]
 
         self._REFRESH_HEAD()
@@ -72,12 +76,21 @@ class MainApp(QMainWindow, QWidget):
         self.btn_browse.clicked.connect(self._browse)
         self.btn_browse_key.clicked.connect(self._browse_key)
         self.btn_start.clicked.connect(self._startTh)
+        self.btn_generate_key.clicked.connect(self.generate_key)
+
+        # MenuBar
+        self.action_quit.triggered.connect(self.quit)
+        self.action_key_generate.triggered.connect(self.generate_key)
+        self.action_openrepo.triggered.connect(self.send_to_github_repo)
+        self.action_openprofile.triggered.connect(self.send_to_github)
 
         self.btn_github.clicked.connect(self.send_to_github)
         
         self.rad_unwrap.toggled.connect(self._radio_change)
         self.rad_wrap.toggled.connect(self._radio_change)
     
+    def quit(self):
+        sys.exit()
 
     def interaction_disable(self):
         for action in self.interaction_list:
@@ -89,6 +102,10 @@ class MainApp(QMainWindow, QWidget):
     def send_to_github(self):
         import webbrowser
         webbrowser.open_new_tab('https://github.com/qwertzuiii')
+    
+    def send_to_github_repo(self):
+        import webbrowser
+        webbrowser.open_new_tab('https://github.com/qwertzuiii/cp-unwrapper')
 
     def _radio_change(self):
         if self.rad_wrap.isChecked():
@@ -213,6 +230,22 @@ class MainApp(QMainWindow, QWidget):
 
         print('Finished')
         self.interaction_enable()
+    
+    def generate_key(self):
+        save_path = QFileDialog.getSaveFileName(caption="Save .cp_key", filter="Content Package Key (*.cp_key)")
+        print(save_path)
+
+        if save_path[0] == "":
+            print('Operation cancelled: Save Path is empty')
+            return
+        
+        rndm_key = fernet.Fernet.generate_key()
+
+        with open(save_path[0], 'wb') as keyf:
+            keyf.write(rndm_key)
+
+        self.line_path_key.setText(save_path[0])
+
 
 if __name__ == '__main__':
 
