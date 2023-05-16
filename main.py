@@ -8,6 +8,7 @@ import threading
 import tempfile
 import zipfile
 from bin.plugins import gpkg_reader as g_r
+from bin.plugins import img_source
 import shutil
 
 # Temp Folder
@@ -61,10 +62,16 @@ class MainApp(QMainWindow, QWidget):
         self.btn_browse.clicked.connect(self._browse)
         self.btn_browse_key.clicked.connect(self._browse_key)
         self.btn_start.clicked.connect(self._startTh)
+
+        self.btn_github.clicked.connect(self.send_to_github)
         
         self.rad_unwrap.toggled.connect(self._radio_change)
         self.rad_wrap.toggled.connect(self._radio_change)
     
+    def send_to_github(self):
+        import webbrowser
+        webbrowser.open_new_tab('https://github.com/qwertzuiii')
+
     def _radio_change(self):
         if self.rad_wrap.isChecked():
             self.line_path.setPlaceholderText("Path to Wrap (.zip)")
