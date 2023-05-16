@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>812</width>
-    <height>193</height>
+    <height>214</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,7 +19,7 @@
   <property name="maximumSize">
    <size>
     <width>812</width>
-    <height>193</height>
+    <height>214</height>
    </size>
   </property>
   <property name="font">
@@ -36,6 +36,21 @@
 	background-color: #1e042f;
 }
 
+QMenuBar {
+	color: rgb(255, 255, 255);
+}
+QMenuBar:disabled {
+	color: rgb(165, 165, 165);
+}
+QMenu {
+	color: rgb(255, 255, 255);
+}
+QMenu:disabled {
+	color: rgb(165, 165, 165);
+}
+QAction {
+	color: rgb(255, 255, 255);
+}
 
 QPushButton {
 	background-color: #7601c5;
@@ -177,7 +192,7 @@ QLineEdit {
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>0</y>
       <width>681</width>
       <height>21</height>
      </rect>
@@ -201,7 +216,7 @@ QLineEdit {
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>25</y>
+      <y>15</y>
       <width>681</width>
       <height>21</height>
      </rect>
@@ -428,7 +443,7 @@ QLineEdit {
     <property name="geometry">
      <rect>
       <x>765</x>
-      <y>8</y>
+      <y>0</y>
       <width>35</width>
       <height>35</height>
      </rect>
@@ -454,6 +469,65 @@ QLineEdit {
     </property>
    </widget>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>812</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="title">
+     <string>File</string>
+    </property>
+    <widget class="QMenu" name="menuKey">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>Key</string>
+     </property>
+     <addaction name="action_key_generate"/>
+    </widget>
+    <addaction name="menuKey"/>
+    <addaction name="separator"/>
+    <addaction name="action_quit"/>
+   </widget>
+   <widget class="QMenu" name="menuGitHub">
+    <property name="title">
+     <string>GitHub</string>
+    </property>
+    <addaction name="action_openrepo"/>
+    <addaction name="action_openprofile"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuGitHub"/>
+  </widget>
+  <action name="action_key_generate">
+   <property name="text">
+    <string>Generate</string>
+   </property>
+  </action>
+  <action name="action_quit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="action_openrepo">
+   <property name="text">
+    <string>Open Repository</string>
+   </property>
+  </action>
+  <action name="action_openprofile">
+   <property name="text">
+    <string>Open Profile</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="window_main.dev.qrc"/>
