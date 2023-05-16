@@ -56,6 +56,16 @@ class MainApp(QMainWindow, QWidget):
         uic.loadUi(RESOURCES['ui'][0], self)  # ui file load
         self.setWindowIcon(QIcon())  # Icon Loading
 
+        self.interaction_list = [
+            self.btn_browse,
+            self.btn_browse_key,
+            self.btn_start,
+            self.rad_unwrap,
+            self.rad_wrap,
+            self.line_path,
+            self.line_path_key
+        ]
+
         self._REFRESH_HEAD()
         self._radio_change()
 
@@ -68,6 +78,14 @@ class MainApp(QMainWindow, QWidget):
         self.rad_unwrap.toggled.connect(self._radio_change)
         self.rad_wrap.toggled.connect(self._radio_change)
     
+
+    def interaction_disable(self):
+        for action in self.interaction_list:
+            action.setEnabled(False)
+    def interaction_enable(self):
+        for action in self.interaction_list:
+            action.setEnabled(True)
+
     def send_to_github(self):
         import webbrowser
         webbrowser.open_new_tab('https://github.com/qwertzuiii')
@@ -107,6 +125,8 @@ class MainApp(QMainWindow, QWidget):
             target = self.start_unwrap
         elif self.rad_wrap.isChecked():
             target = self.start_wrap
+        
+        self.interaction_disable()
 
         x = threading.Thread(target=target)
         x.start()
@@ -118,7 +138,7 @@ class MainApp(QMainWindow, QWidget):
 
         if path_file == "":
             print('Operation cancelled: File Path is empty')
-            return
+            return self.interaction_enable()
         
         output_folder_split = path_file.split('/')
         output_folder = ""
@@ -156,6 +176,7 @@ class MainApp(QMainWindow, QWidget):
         os.remove(TEMPDIR + "unwrap.temp")
 
         print('Finished')
+        self.interaction_enable()
     
     def start_wrap(self):
         path_file = self.line_path.text()
@@ -163,7 +184,7 @@ class MainApp(QMainWindow, QWidget):
 
         if path_file == "":
             print('Operation cancelled: File Path is empty')
-            return
+            return self.interaction_enable()
         
         output_folder_split = path_file.split('/')
         output_folder = ""
@@ -191,6 +212,7 @@ class MainApp(QMainWindow, QWidget):
             wr.write(fer.encrypt(file_content))
 
         print('Finished')
+        self.interaction_enable()
 
 if __name__ == '__main__':
 
