@@ -43,10 +43,15 @@ QPushButton {
 	border-radius: 5px;
 	border: 2px solid #d074f8;
 }
-QPushButton::hover {
+QPushButton:disabled {
+	background-color: rgb(58, 1, 137);
+	border: 2px solid rgb(148, 56, 188);
+
+}
+QPushButton:enabled::hover {
 	background-color: rgb(130, 1, 220);
 }
-QPushButton:pressed {
+QPushButton:enabled:pressed {
 	background-color: rgb(100, 1, 170);
 }
 
@@ -144,6 +149,12 @@ QLineEdit {
       <iconset resource="window_main.dev.qrc">
        <normaloff>:/icons/imgs.res.dev/file.svg</normaloff>:/icons/imgs.res.dev/file.svg</iconset>
      </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
     </widget>
     <widget class="QLabel" name="icon_file">
      <property name="geometry">
@@ -229,7 +240,7 @@ QLineEdit {
       <rect>
        <x>40</x>
        <y>20</y>
-       <width>551</width>
+       <width>511</width>
        <height>31</height>
       </rect>
      </property>
@@ -265,6 +276,12 @@ QLineEdit {
       <iconset resource="window_main.dev.qrc">
        <normaloff>:/icons/imgs.res.dev/file.svg</normaloff>:/icons/imgs.res.dev/file.svg</iconset>
      </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
     </widget>
     <widget class="QLabel" name="icon_key">
      <property name="geometry">
@@ -280,6 +297,36 @@ QLineEdit {
      </property>
      <property name="pixmap">
       <pixmap resource="window_main.dev.qrc">:/icons/imgs.res.dev/key.svg</pixmap>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_generate_key">
+     <property name="geometry">
+      <rect>
+       <x>560</x>
+       <y>20</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Nirmala UI</family>
+       <pointsize>10</pointsize>
+       <kerning>true</kerning>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="window_main.dev.qrc">
+       <normaloff>:/icons/imgs.res.dev/save.svg</normaloff>:/icons/imgs.res.dev/save.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
      </property>
     </widget>
    </widget>
@@ -312,11 +359,21 @@ QLineEdit {
      <property name="font">
       <font>
        <family>Nirmala UI</family>
-       <pointsize>10</pointsize>
+       <pointsize>8</pointsize>
       </font>
      </property>
      <property name="text">
       <string>Unwarp/Wrap</string>
+     </property>
+     <property name="icon">
+      <iconset resource="window_main.dev.qrc">
+       <normaloff>:/icons/imgs.res.dev/package.svg</normaloff>:/icons/imgs.res.dev/package.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
      </property>
     </widget>
     <widget class="QRadioButton" name="rad_unwrap">
@@ -365,6 +422,9 @@ QLineEdit {
     </widget>
    </widget>
    <widget class="QPushButton" name="btn_github">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>765</x>
@@ -385,6 +445,9 @@ QLineEdit {
       <width>24</width>
       <height>24</height>
      </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
     </property>
     <property name="flat">
      <bool>false</bool>
